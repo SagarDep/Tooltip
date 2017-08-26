@@ -27,11 +27,12 @@ package android.support.v4.view;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
+import android.support.annotation.RequiresApi;
 import android.view.ViewTreeObserver;
 
 /**
  * Helper for accessing features in {@link ViewTreeObserver} introduced after API
- * level 4 in a backwards compatible fashion.
+ * level 16 in a backwards compatible fashion.
  */
 public final class ViewTreeObserverCompat {
 
@@ -42,6 +43,7 @@ public final class ViewTreeObserverCompat {
         }
     }
 
+    @RequiresApi(VERSION_CODES.JELLY_BEAN)
     @TargetApi(VERSION_CODES.JELLY_BEAN)
     static class ViewTreeObserverCompatApi16Impl extends ViewTreeObserverCompatBaseImpl {
 
