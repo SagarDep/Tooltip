@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
-apply from: '../maven_push.gradle'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.github.sangcomz'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion

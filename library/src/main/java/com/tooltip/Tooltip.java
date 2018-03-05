@@ -63,6 +63,7 @@ public final class Tooltip {
     private final boolean isDismissOnClick;
 
     private final int mGravity;
+    private final int mTextGravity;
 
     private final float mMargin;
 
@@ -81,6 +82,7 @@ public final class Tooltip {
         isDismissOnClick = builder.isDismissOnClick;
 
         mGravity = builder.mGravity;
+        mTextGravity = builder.mTextGravity;
         mMargin = builder.mMargin;
         mAnchorView = builder.mAnchorView;
         mOnClickListener = builder.mOnClickListener;
@@ -119,6 +121,7 @@ public final class Tooltip {
         textView.setPadding(padding, padding, padding, padding);
         textView.setLineSpacing(builder.mLineSpacingExtra, builder.mLineSpacingMultiplier);
         textView.setTypeface(builder.mTypeface, builder.mTextStyle);
+        textView.setGravity(mTextGravity);
 
         if (builder.mTextSize >= 0) {
             textView.setTextSize(TypedValue.TYPE_NULL, builder.mTextSize);
@@ -379,6 +382,7 @@ public final class Tooltip {
         private int mBackgroundColor;
         private int mTextAppearance;
         private int mTextStyle;
+        private int mTextGravity;
 
         private float mCornerRadius;
         private float mArrowHeight;
@@ -444,6 +448,7 @@ public final class Tooltip {
             mTextAppearance = a.getResourceId(R.styleable.Tooltip_textAppearance, -1);
             mPadding = a.getDimension(R.styleable.Tooltip_android_padding, -1);
             mGravity = a.getInteger(R.styleable.Tooltip_android_gravity, Gravity.BOTTOM);
+            mTextGravity = a.getInteger(R.styleable.Tooltip_android_gravity, Gravity.LEFT);
             mText = a.getString(R.styleable.Tooltip_android_text);
             mTextSize = a.getDimension(R.styleable.Tooltip_android_textSize, -1);
             mTextColor = a.getColorStateList(R.styleable.Tooltip_android_textColor);
@@ -744,6 +749,17 @@ public final class Tooltip {
             mOnDismissListener = listener;
             return this;
         }
+
+        /**
+         * Sets Tooltip gravity.
+         *
+         * @return This Builder object to allow for chaining of calls to set methods
+         */
+        public Builder setTextGravity(int gravity) {
+            mTextGravity = gravity;
+            return this;
+        }
+
 
         /**
          * Creates a {@link Tooltip} with the arguments supplied to this builder. It does not

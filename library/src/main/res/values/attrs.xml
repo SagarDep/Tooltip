@@ -10,6 +10,7 @@
         <attr name="arrowDrawable" format="reference"/>
         <attr name="margin" format="dimension"/>
         <attr name="textAppearance" format="reference"/>
+        <attr name="textGravity" format="integer"/>
         <attr name="android:padding"/>
         <attr name="android:text"/>
         <attr name="android:textSize"/>
