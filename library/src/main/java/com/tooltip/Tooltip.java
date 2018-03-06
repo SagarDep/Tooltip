@@ -65,6 +65,8 @@ public final class Tooltip {
     private final int mGravity;
     private final int mTextGravity;
 
+    private Object mTag;
+
     private final float mMargin;
 
     private final View mAnchorView;
@@ -85,6 +87,7 @@ public final class Tooltip {
         mTextGravity = builder.mTextGravity;
         mMargin = builder.mMargin;
         mAnchorView = builder.mAnchorView;
+        mTag = builder.mTag;
         mOnClickListener = builder.mOnClickListener;
         mOnLongClickListener = builder.mOnLongClickListener;
         mOnDismissListener = builder.mOnDismissListener;
@@ -196,6 +199,15 @@ public final class Tooltip {
      */
     public boolean isShowing() {
         return mPopupWindow.isShowing();
+    }
+
+    /**
+     * <p>Tooltip tag object</p>
+     *
+     * @return tag object
+     */
+    public Object getTag() {
+        return mTag;
     }
 
     /**
@@ -393,6 +405,8 @@ public final class Tooltip {
         private float mLineSpacingExtra;
         private float mLineSpacingMultiplier = 1f;
 
+        private Object mTag;
+
         private Drawable mArrowDrawable;
         private CharSequence mText;
         private ColorStateList mTextColor;
@@ -453,6 +467,7 @@ public final class Tooltip {
             mTextSize = a.getDimension(R.styleable.Tooltip_android_textSize, -1);
             mTextColor = a.getColorStateList(R.styleable.Tooltip_android_textColor);
             mTextStyle = a.getInteger(R.styleable.Tooltip_android_textStyle, -1);
+            mTag = a.getText(R.styleable.Tooltip_tag);
             mLineSpacingExtra = a.getDimensionPixelSize(R.styleable.Tooltip_android_lineSpacingExtra, 0);
             mLineSpacingMultiplier = a.getFloat(R.styleable.Tooltip_android_lineSpacingMultiplier, mLineSpacingMultiplier);
 
@@ -757,6 +772,16 @@ public final class Tooltip {
          */
         public Builder setTextGravity(int gravity) {
             mTextGravity = gravity;
+            return this;
+        }
+
+        /**
+         * Sets Tooltip tag.
+         *
+         * @return This Builder object to allow for chaining of calls to set methods
+         */
+        public Builder setTag(Object tag) {
+            mTag = tag;
             return this;
         }
 

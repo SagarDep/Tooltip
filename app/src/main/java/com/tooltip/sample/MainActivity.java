@@ -34,11 +34,15 @@ public class MainActivity extends AppCompatActivity {
                         .setCancelable(true)
                         .setDismissOnClick(false)
                         .setCornerRadius(20f)
+                        .setTag("tag haha")
                         .setGravity(Gravity.BOTTOM)
                         .setText(R.string.tooltip_hello_world);
+                
                 builder.show();
             }
         });
+
+
     }
 
     @Override
